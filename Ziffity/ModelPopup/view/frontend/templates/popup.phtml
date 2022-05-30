@@ -1,0 +1,38 @@
+<?php if($block->isExistingCustomer()) :?>
+<div id="popup-modal">
+    <h3>Model Popup</h3>
+    <h1><?= $block->getMessage();?></h1>
+    <div class="image">
+        <?php  ?>
+        <img src="<?= $block->getImage()?>">
+    </div>
+</div>
+<script>
+require(
+    [
+        'jquery',
+        'Magento_Ui/js/modal/modal'
+    ],
+  function(
+        $,
+        modal
+    ) {
+        var options = {
+            type: 'popup',
+            responsive: true,
+            innerScroll: true,
+            buttons: [{
+                text: $.mage.__('Continue'),
+                class: '',
+                click: function () {
+                    this.closeModal();
+                }
+            }]
+        };
+        var popup = modal(options, $('#popup-modal'));
+
+$('#popup-modal').modal('openModal');
+    }
+);
+</script>
+<?php endif;?>
